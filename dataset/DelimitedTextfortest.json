@@ -1,0 +1,28 @@
+{
+	"name": "DelimitedTextfortest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServerfortest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "sites/default/files/documents/weekly_testing_data_EUEEAUK_2022-09-15.xlsx"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PK\u0003\u0004\u0014\u0000\u0000\u0000\b\u0000\u0000\u0000!\u00008���>\u0001\u0000\u0000\u0007\u0004\u0000\u0000\u0013\u0000\u0000\u0000[Content_Types].xml���n� \u0010E��",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

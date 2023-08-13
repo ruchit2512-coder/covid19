@@ -1,0 +1,9 @@
+{
+	"name": "ruchityadavdatafacory",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d95a2a7d-66cb-426f-8650-606390020802",
+		"tenantId": "339df4a7-208d-4f6c-af95-ea0005379428"
+	}
+}

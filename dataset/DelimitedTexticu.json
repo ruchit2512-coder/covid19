@@ -1,0 +1,24 @@
+{
+	"name": "DelimitedTexticu",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorageicuadmission",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "hospitaladdmission",
+				"fileSystem": "covid19container"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
