@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "processeddata",
+						"referenceName": "DelimitedText2",
 						"type": "DatasetReference"
 					},
 					"name": "casesanddeathsink"
@@ -78,7 +78,7 @@
 				"          indicator,",
 				"          daily_count,",
 				"          source,",
-				"          each(match(name == 'date'),",
+				"          each(match(name=='date'),",
 				"               'reported'+'_date' = $$)",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
