@@ -29,7 +29,7 @@
 				"          country as string,",
 				"          country_code as string,",
 				"          continent as string,",
-				"          population as long,",
+				"          population as integer,",
 				"          indicator as string,",
 				"          daily_count as integer,",
 				"          date as date,",
