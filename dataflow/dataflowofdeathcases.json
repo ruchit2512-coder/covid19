@@ -13,7 +13,14 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "filtereuropeonly"
+				},
+				{
+					"name": "selectonlyrequiredcolumn"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          country as string,",
@@ -28,7 +35,20 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> sourcedeathcases"
+				"     ignoreNoFilesFound: false) ~> sourcedeathcases",
+				"sourcedeathcases filter(continent == 'Europe' && not(isNull(country_code))) ~> filtereuropeonly",
+				"filtereuropeonly select(mapColumn(",
+				"          country,",
+				"          country_code,",
+				"          population,",
+				"          indicator,",
+				"          daily_count,",
+				"          source,",
+				"          each(match(name == 'date'),",
+				"               'reported'+'_date' = $$)",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectonlyrequiredcolumn"
 			]
 		}
 	}
