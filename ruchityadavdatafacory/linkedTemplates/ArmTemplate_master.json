@@ -1,0 +1,188 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ruchityadavdatafacory"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDataLakeStorage_death_cases_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage_death_cases'"
+		},
+		"AzureDataLakeStoragefordeathcases_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStoragefordeathcases'"
+		},
+		"AzureDataLakeStorageicuadmission_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorageicuadmission'"
+		},
+		"AzureDataLakeStoragetest_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStoragetest'"
+		},
+		"AzureDataLakedeathcases_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakedeathcases'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage_death_cases_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStoragefordeathcases_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorageicuadmission_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStoragetest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakedeathcases_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"HttpServer hopital addmission_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.ecdc.europa.eu"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.ecdc.europa.eu"
+		},
+		"HttpServer2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.ecdc.europa.eu"
+		},
+		"HttpServerfortest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.ecdc.europa.eu"
+		},
+		"HttpServerofdeathcases_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://opendata.ecdc.europa.eu"
+		},
+		"HttpServerofhospitaladmission_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://opendata.ecdc.europa.eu"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ruchityadavdatafacory_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDataLakeStorage_death_cases_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage_death_cases_accountKey')]"
+					},
+					"AzureDataLakeStoragefordeathcases_accountKey": {
+						"value": "[parameters('AzureDataLakeStoragefordeathcases_accountKey')]"
+					},
+					"AzureDataLakeStorageicuadmission_accountKey": {
+						"value": "[parameters('AzureDataLakeStorageicuadmission_accountKey')]"
+					},
+					"AzureDataLakeStoragetest_accountKey": {
+						"value": "[parameters('AzureDataLakeStoragetest_accountKey')]"
+					},
+					"AzureDataLakedeathcases_accountKey": {
+						"value": "[parameters('AzureDataLakedeathcases_accountKey')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage_death_cases_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage_death_cases_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStoragefordeathcases_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStoragefordeathcases_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorageicuadmission_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorageicuadmission_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStoragetest_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStoragetest_properties_typeProperties_url')]"
+					},
+					"AzureDataLakedeathcases_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakedeathcases_properties_typeProperties_url')]"
+					},
+					"HttpServer hopital addmission_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer hopital addmission_properties_typeProperties_url')]"
+					},
+					"HttpServer1_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
+					},
+					"HttpServer2_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer2_properties_typeProperties_url')]"
+					},
+					"HttpServerfortest_properties_typeProperties_url": {
+						"value": "[parameters('HttpServerfortest_properties_typeProperties_url')]"
+					},
+					"HttpServerofdeathcases_properties_typeProperties_url": {
+						"value": "[parameters('HttpServerofdeathcases_properties_typeProperties_url')]"
+					},
+					"HttpServerofhospitaladmission_properties_typeProperties_url": {
+						"value": "[parameters('HttpServerofhospitaladmission_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ruchityadavdatafacory_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ruchityadavdatafacory_ArmTemplate_0')]"
+			]
+		}
+	]
+}

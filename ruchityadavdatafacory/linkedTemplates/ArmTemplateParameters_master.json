@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ruchityadavdatafacory"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage_death_cases_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStoragefordeathcases_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorageicuadmission_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStoragetest_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakedeathcases_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage_death_cases_properties_typeProperties_url": {
+			"value": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStoragefordeathcases_properties_typeProperties_url": {
+			"value": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorageicuadmission_properties_typeProperties_url": {
+			"value": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStoragetest_properties_typeProperties_url": {
+			"value": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakedeathcases_properties_typeProperties_url": {
+			"value": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"HttpServer hopital addmission_properties_typeProperties_url": {
+			"value": "https://www.ecdc.europa.eu"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://www.ecdc.europa.eu"
+		},
+		"HttpServer2_properties_typeProperties_url": {
+			"value": "https://www.ecdc.europa.eu"
+		},
+		"HttpServerfortest_properties_typeProperties_url": {
+			"value": "https://www.ecdc.europa.eu"
+		},
+		"HttpServerofdeathcases_properties_typeProperties_url": {
+			"value": "https://opendata.ecdc.europa.eu"
+		},
+		"HttpServerofhospitaladmission_properties_typeProperties_url": {
+			"value": "https://opendata.ecdc.europa.eu"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
