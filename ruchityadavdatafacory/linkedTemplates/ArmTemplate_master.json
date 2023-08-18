@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStoragefordeathcases'"
 		},
+		"AzureDataLakeStoragehp_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStoragehp'"
+		},
 		"AzureDataLakeStorageicuadmission_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorageicuadmission'"
@@ -40,6 +44,10 @@
 			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStoragefordeathcases_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStoragehp_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
 		},
@@ -115,6 +123,9 @@
 					"AzureDataLakeStoragefordeathcases_accountKey": {
 						"value": "[parameters('AzureDataLakeStoragefordeathcases_accountKey')]"
 					},
+					"AzureDataLakeStoragehp_accountKey": {
+						"value": "[parameters('AzureDataLakeStoragehp_accountKey')]"
+					},
 					"AzureDataLakeStorageicuadmission_accountKey": {
 						"value": "[parameters('AzureDataLakeStorageicuadmission_accountKey')]"
 					},
@@ -132,6 +143,9 @@
 					},
 					"AzureDataLakeStoragefordeathcases_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStoragefordeathcases_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStoragehp_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStoragehp_properties_typeProperties_url')]"
 					},
 					"AzureDataLakeStorageicuadmission_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorageicuadmission_properties_typeProperties_url')]"

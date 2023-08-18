@@ -14,6 +14,9 @@
 		"AzureDataLakeStoragefordeathcases_accountKey": {
 			"value": ""
 		},
+		"AzureDataLakeStoragehp_accountKey": {
+			"value": ""
+		},
 		"AzureDataLakeStorageicuadmission_accountKey": {
 			"value": ""
 		},
@@ -30,6 +33,9 @@
 			"value": "https://covid19storageruchit.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStoragefordeathcases_properties_typeProperties_url": {
+			"value": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStoragehp_properties_typeProperties_url": {
 			"value": "https://covid19storageruchit.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStorageicuadmission_properties_typeProperties_url": {

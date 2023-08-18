@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStoragefordeathcases'"
 		},
+		"AzureDataLakeStoragehp_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStoragehp'"
+		},
 		"AzureDataLakeStorageicuadmission_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorageicuadmission'"
@@ -40,6 +44,10 @@
 			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStoragefordeathcases_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStoragehp_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://covid19storageruchit.dfs.core.windows.net/"
 		},
@@ -842,6 +850,196 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ds_dim_date')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage_death_cases",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "dim_date.csv",
+						"fileSystem": "covid19container"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "date_key",
+						"type": "String"
+					},
+					{
+						"name": "date",
+						"type": "String"
+					},
+					{
+						"name": "year",
+						"type": "String"
+					},
+					{
+						"name": "month",
+						"type": "String"
+					},
+					{
+						"name": "day",
+						"type": "String"
+					},
+					{
+						"name": "day_name",
+						"type": "String"
+					},
+					{
+						"name": "day_of_year",
+						"type": "String"
+					},
+					{
+						"name": "week_of_month",
+						"type": "String"
+					},
+					{
+						"name": "week_of_year",
+						"type": "String"
+					},
+					{
+						"name": "month_name",
+						"type": "String"
+					},
+					{
+						"name": "year_month",
+						"type": "String"
+					},
+					{
+						"name": "year_week",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage_death_cases')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_hospital_admission')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStoragehp",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "hospital_admissions.csv",
+						"fileSystem": "covid19container"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "country",
+						"type": "String"
+					},
+					{
+						"name": "indicator",
+						"type": "String"
+					},
+					{
+						"name": "date",
+						"type": "String"
+					},
+					{
+						"name": "year_week",
+						"type": "String"
+					},
+					{
+						"name": "value",
+						"type": "String"
+					},
+					{
+						"name": "source",
+						"type": "String"
+					},
+					{
+						"name": "url",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStoragehp')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_processed_daily')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "cleaned data/ecdc/daily",
+						"fileSystem": "covid19container"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_processed_weekly')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "cleaned data/ecdc/weekly",
+						"fileSystem": "covid19container"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/processeddata')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -927,6 +1125,29 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('AzureDataLakeStoragefordeathcases_accountKey')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStoragehp')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStoragehp_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDataLakeStoragehp_accountKey')]"
 					}
 				},
 				"connectVia": {
@@ -1286,6 +1507,248 @@
 				"[concat(variables('factoryId'), '/datasets/deathcasesdt')]",
 				"[concat(variables('factoryId'), '/datasets/countrylookup')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/df_hospital_admission')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_hospital_admission",
+								"type": "DatasetReference"
+							},
+							"name": "sourcehospitaladmission"
+						},
+						{
+							"dataset": {
+								"referenceName": "countrylookup",
+								"type": "DatasetReference"
+							},
+							"name": "lookupsource"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_dim_date",
+								"type": "DatasetReference"
+							},
+							"name": "sourcedimdate"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_processed_weekly",
+								"type": "DatasetReference"
+							},
+							"name": "sinkweekly"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_processed_daily",
+								"type": "DatasetReference"
+							},
+							"name": "sinkdaily"
+						}
+					],
+					"transformations": [
+						{
+							"name": "select1"
+						},
+						{
+							"name": "lookupcountry"
+						},
+						{
+							"name": "selectrequiredfield"
+						},
+						{
+							"name": "splitbyweekanddaily"
+						},
+						{
+							"name": "derivedColumn"
+						},
+						{
+							"name": "aggregatedimdate"
+						},
+						{
+							"name": "joinondate"
+						},
+						{
+							"name": "pivotonweekly"
+						},
+						{
+							"name": "pivotondaily"
+						},
+						{
+							"name": "sortweekly"
+						},
+						{
+							"name": "sortdaily"
+						},
+						{
+							"name": "selectweeklyfinal"
+						},
+						{
+							"name": "selectdaily"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          country as string,",
+						"          indicator as string,",
+						"          date as date,",
+						"          year_week as string,",
+						"          value as double,",
+						"          source as string,",
+						"          url as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> sourcehospitaladmission",
+						"source(output(",
+						"          country as string,",
+						"          country_code_2_digit as string,",
+						"          country_code_3_digit as string,",
+						"          continent as string,",
+						"          population as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> lookupsource",
+						"source(output(",
+						"          date_key as date,",
+						"          date as date,",
+						"          year as string,",
+						"          month as short,",
+						"          day as short,",
+						"          day_name as string,",
+						"          day_of_year as short,",
+						"          week_of_month as short,",
+						"          week_of_year as string,",
+						"          month_name as string,",
+						"          year_month as integer,",
+						"          year_week as short",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> sourcedimdate",
+						"sourcehospitaladmission select(mapColumn(",
+						"          country,",
+						"          indicator,",
+						"          reported_date = date,",
+						"          reported_year_week = year_week,",
+						"          value,",
+						"          source",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select1",
+						"select1, lookupsource lookup(select1@country == lookupsource@country,",
+						"     multiple: false,",
+						"     pickup: 'any',",
+						"     broadcast: 'auto')~> lookupcountry",
+						"lookupcountry select(mapColumn(",
+						"          country = select1@country,",
+						"          indicator,",
+						"          reported_date,",
+						"          reported_year_week,",
+						"          value,",
+						"          source,",
+						"          country_code_2_digit,",
+						"          country_code_3_digit,",
+						"          population",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> selectrequiredfield",
+						"selectrequiredfield split(indicator == 'Weekly new hospital admissions per 100k' || indicator == 'Weekly new ICU admissions per 100k',",
+						"     disjoint: false) ~> splitbyweekanddaily@(weekly, daily)",
+						"sourcedimdate derive(ecdc_year_week = year + '-W' + lpad(week_of_year,2,'0')) ~> derivedColumn",
+						"derivedColumn aggregate(groupBy(ecdc_year_week),",
+						"     week_start_date = min(date),",
+						"          week_end_date = max(date)) ~> aggregatedimdate",
+						"splitbyweekanddaily@weekly, aggregatedimdate join(reported_year_week == ecdc_year_week,",
+						"     joinType:'inner',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> joinondate",
+						"joinondate pivot(groupBy(country,",
+						"          country_code_2_digit,",
+						"          country_code_3_digit,",
+						"          population,",
+						"          reported_year_week,",
+						"          week_start_date,",
+						"          week_end_date,",
+						"          source),",
+						"     pivotBy(indicator, ['Weekly  new hospital admissions per 100k', 'Weekly  new ICU admissions per 100k']),",
+						"     count = sum(value),",
+						"     columnNaming: '$N-$V',",
+						"     lateral: true) ~> pivotonweekly",
+						"splitbyweekanddaily@daily pivot(groupBy(country,",
+						"          country_code_2_digit,",
+						"          country_code_3_digit,",
+						"          population,",
+						"          reported_date,",
+						"          source),",
+						"     pivotBy(indicator, ['Daily hospital occupancy', 'Daily ICU occupancy']),",
+						"     count = sum(value),",
+						"     columnNaming: '$V_$N',",
+						"     lateral: true) ~> pivotondaily",
+						"pivotonweekly sort(desc(reported_year_week, true),",
+						"     asc(country, true)) ~> sortweekly",
+						"pivotondaily sort(desc(reported_date, true),",
+						"     asc(country, true)) ~> sortdaily",
+						"sortweekly select(mapColumn(",
+						"          country,",
+						"          country_code_2_digit,",
+						"          country_code_3_digit,",
+						"          population,",
+						"          reported_year_week,",
+						"          reported_week_start_date = week_start_date,",
+						"          reported_week_end_date = week_end_date,",
+						"          hospital_admissions_count = {count-Weekly  new hospital admissions per 100k},",
+						"          icu_admissions_count = {count-Weekly  new ICU admissions per 100k},",
+						"          source",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> selectweeklyfinal",
+						"sortdaily select(mapColumn(",
+						"          country,",
+						"          country_code_2_digit,",
+						"          country_code_3_digit,",
+						"          population,",
+						"          reported_date,",
+						"          hospital_occupancy_count = {Daily hospital occupancy_count},",
+						"          icu_occupancy_count = {Daily ICU occupancy_count},",
+						"          source",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> selectdaily",
+						"selectweeklyfinal sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sinkweekly",
+						"selectdaily sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sinkdaily"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_hospital_admission')]",
+				"[concat(variables('factoryId'), '/datasets/countrylookup')]",
+				"[concat(variables('factoryId'), '/datasets/ds_dim_date')]",
+				"[concat(variables('factoryId'), '/datasets/ds_processed_weekly')]",
+				"[concat(variables('factoryId'), '/datasets/ds_processed_daily')]"
 			]
 		},
 		{
